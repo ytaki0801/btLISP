@@ -19,4 +19,5 @@
 * SL: pop true and false codes from C, dump the current C to D,
     pop a conditional value from C and set the true or false code to C
 * JI: pop C from D and push it to C
+* ST: stop vm
 
