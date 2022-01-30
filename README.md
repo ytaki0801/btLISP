@@ -1,4 +1,4 @@
-# btLISP: a Pure LISP compiler with a SECD-style virtual machine to bootstrap
+# btLISP: a Pure LISP self-compiler with a SECD-style virtual machine to bootstrap
 
 This project is aimed to define a minimum specification of a LISP self-compiler implementation and a SECD-style virtual machine for fun, education or research of [bootstrapping](https://en.wikipedia.org/wiki/Bootstrapping_(compilers)).
 
