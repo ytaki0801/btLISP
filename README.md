@@ -1,6 +1,8 @@
 # btLISP: a Pure LISP compiler with a SECD-style virtual machine to bootstrap
 
-Currently the implementation language is only Python but other languages may supposed in future.
+This project is aimed to define a minimum specification of a LISP self-compiler implementation and a SECD-style virtual machine for fun, education or research of [bootstrapping](https://en.wikipedia.org/wiki/Bootstrapping_(compilers)).
+
+See the shell scripts in v0 and v1 directories for details to bootstrap. Currently the implementation language is only Python but other languages may supposed in future.
 
 # vm
 
