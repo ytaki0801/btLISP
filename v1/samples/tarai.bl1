@@ -1,0 +1,8 @@
+((urec t (lambda (x y z)
+   (if (gt x y)
+       ((t t) ((t t) (sub x 1) y z)
+              ((t t) (sub y 1) z x)
+              ((t t) (sub z 1) x y))
+       y)))
+ 10 5 0)
+

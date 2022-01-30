@@ -1,0 +1,9 @@
+((((lambda (assoc) (lambda (k) (lambda (pl)
+     ((assoc k) pl))))
+   ((lambda (u) (u u)) (lambda (u) (lambda (k) (lambda (pl)
+      (if ((eq pl) (quote ())) (quote ())
+          (if ((eq (car pl)) k) (car (cdr pl))
+              (((u u) k) (cdr (cdr pl))))))))))
+  (quote Orange))
+ (quote (Apple 120 Orange 210 Lemon 180)))
+

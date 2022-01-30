@@ -1,0 +1,76 @@
+;;;;
+;;;; bl-comp1.bl1: btLISP compiler version 1 by btLISP version 1
+;;;;
+;;;; (C) 2022 TAKIZAWA Yozo
+;;;; This code is licensed under CC0.
+;;;; https://creativecommons.org/publicdomain/zero/1.0/
+;;;;
+
+;;;; compile btLISP codes to blSECD virtual machine codes
+;;;; s: LISP codes from C, e: positions of closure vals in E, c: next codes
+((urec u (lambda (s e c)
+
+   ;;;; not pair
+   (if (atom s)
+       ;;;; int value to set S
+       (if (intp s) (list (quote LV) s (cdr c))
+       ;;;; nil value to set S
+       (if (eq s (quote nil)) (cons (quote LV) (cons (quote ()) c))
+       ;;;; a constant value or a pos of a closure val from E to set S
+       ((lambda (p) (if (eq p nil) (cons (quote LV) (cons s c))
+                                   (cons (quote LD) (cons p c))))
+        (idx s e))))
+
+   ;;;; quote
+   (if (eq (car s) (quote quote)) (cons (quote LV) (cons (car (cdr s)) c))
+
+   ;;;; if
+   (if (eq (car s) (quote if))
+       ((lambda (t f)
+          ((u u) (car (cdr s)) e (cons (quote SL) (cons t (cons f c)))))
+        ((u u) (car (cdr (cdr s)))       e (quote (JI)))
+        ((u u) (car (cdr (cdr (cdr s)))) e (quote (JI))))
+
+   ;;;; lambda
+   (if (eq (car s) (quote lambda))
+       ((lambda (v b)
+          ((lambda (br)
+             (cons (quote LF)
+                (cons ((u u) br ((cons (car v)) e) (quote (RT))) c)))
+           (if (eq (cdr v) nil) b
+                ;;;; recursive expansion for multi argumens of lambda
+               (cons (quote lambda) (cons (cdr v) (list b))))))
+        (car (cdr s)) (car (cdr (cdr s))))
+
+   ;;;; list
+   (if (eq (car s) (quote list))
+       (if (eq (cdr s) nil)
+           (cons (quote LV) (cons (quote ()) c))
+           ;;;; recursive expansion for multi vals
+           (add (add
+             ((u u) (cons (quote list) (cdr (cdr s))) e nil)
+             ((u u) (cons (quote (quote cons)) (list (car (cdr s))))
+                    e (quote (AP)))) c))
+
+   ;;;; urec: recursion syntax by U-combinator
+   (if (eq (car s) (quote urec))
+       ((lambda (f b)
+          (add ((u u) (cons (cons (quote lambda)
+                        (cons (list f) (list (cons f (list f)))))
+                          (list (cons (quote lambda)
+                            (cons (list f) (list b)))))
+                      e nil) c))
+        (car (cdr s)) (car (cdr (cdr s))))
+
+   ;;;; generate codes to apply a function
+   ((lambda (f a r)
+      ((urec w (lambda (t r)
+         (if (eq r nil) (add t c)
+             ;;;; recursive apply for multi argumens of lambda
+             ((w w) ((u u) (car r) e (add t (quote (AP)))) (cdr r)))))
+       ((u u) a e ((u u) f e (quote (AP)))) r))
+    (car s) (car (cdr s)) (cdr (cdr s)))))))))))
+
+ ;;;; read S-expression, initialize env as nil and (ST) as next codes
+ (read nil) nil (quote (ST)))
+

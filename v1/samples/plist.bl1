@@ -1,0 +1,8 @@
+;;;; property list example
+((urec p (lambda (k pl)
+   (if (eq pl nil) nil
+       (if (eq (car pl) k) (car (cdr pl))
+           ((p p) k (cdr (cdr pl)))))))
+ (quote Orange)
+ (quote (Apple 120 Orange 210 Lemon 180)))
+

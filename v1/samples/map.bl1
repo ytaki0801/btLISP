@@ -1,0 +1,7 @@
+((urec m (lambda (f a)
+   (if (eq a nil) nil
+       (cons (f (car a))
+             ((m m) f (cdr a))))))
+ (lambda (x) (car (cdr x)))
+ (quote ((a b c d e) (x y) (i n k) (q w))))
+

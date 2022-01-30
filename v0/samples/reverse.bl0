@@ -1,0 +1,8 @@
+(((lambda (reverse) (lambda (a)
+    ((reverse a) (quote ()))))
+  ((lambda (u) (u u)) (lambda (u)
+     (lambda (x) (lambda (y)
+       (if ((eq x) (quote ())) y
+           (((u u) (cdr x)) ((cons (car x)) y))))))))
+ (quote (a b c d e)))
+

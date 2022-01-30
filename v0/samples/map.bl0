@@ -1,0 +1,10 @@
+((((lambda (map) (lambda (f) (lambda (a)
+     ((map f) a))))
+   ((lambda (u) (u u)) (lambda (u)
+      (lambda (f) (lambda (a)
+        (if ((eq a) (quote ())) (quote ())
+            ((cons (f (car a)))
+                   (((u u) f) (cdr a)))))))))
+  (lambda (x) (car (cdr x))))
+ (quote ((a b c d e) (x y) (i n k) (q w))))
+

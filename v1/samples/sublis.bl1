@@ -1,0 +1,14 @@
+((urec s (lambda (pl ls)
+   (if (eq ls nil) nil
+   (cons (if (atom (car ls))
+             ((lambda (r) (if (eq r nil) (car ls) r))
+              ((urec p (lambda (k vs)
+                 (if (eq vs nil) nil
+                 (if (eq (car vs) k) (car (cdr vs))
+                     ((p p) k (cdr (cdr vs)))))))
+               (car ls) pl))
+             ((s s) pl (car ls)))
+         ((s s) pl (cdr ls))))))
+ (quote (X John Y Mary))
+ (quote ((Jim aka X) likes Y)))
+
