@@ -4,7 +4,7 @@
 	* `bl-comp1.bl0`: v1 compiler running on v0 interpreter or by compiler with vm
 	* `bl-comp1.bl1`: v1 compiler running by v1 compiler with vm only
 
-* basic functions: `intp`, `add`, `sub`, `mul`, `div`, `quo`, `rem`, `lt`, `gt`
+* built-in functions: `intp`, `add`, `sub`, `mul`, `div`, `quo`, `rem`, `lt`, `gt`
 
 * S-expression input function: comment
 
