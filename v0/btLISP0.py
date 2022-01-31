@@ -11,8 +11,7 @@ def ev(s, e):
     elif s[0] == 'lambda': return s + [e]
     else:
         f, a = ev(s[0], e), ev(s[1], e)
-        if callable(f): return f(a)
-        else: return ev(f[2], {**f[3], f[1][0]: a})
+        return f(a) if callable(f) else ev(f[2], {**f[3], f[1][0]: a})
 
 sewrite(ev(seread(None if len(argv) < 2 else argv[1]), {})); print()
 

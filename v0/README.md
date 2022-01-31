@@ -1,6 +1,6 @@
 # v0: bootstrap specification
 
-* interpreter and compiler: `quote`, `if, `lambda` with lexical-scope and just one argument only
+* interpreter and compiler: `quote`, `if`, `lambda` with lexical-scope and just one argument only
 
 * built-in functions: `cons`, `car`, `cdr`, `eq`, `atom`, `idx` to treat positions of closure values in vm , `read` to input S-expression
 
