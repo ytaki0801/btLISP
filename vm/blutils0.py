@@ -37,12 +37,12 @@ def atom(x):
     return not isinstance(x, list) or x == None or isinstance(x, bool)
 
 G = {
-  'cons': lambda x: lambda y: [x] + y,
-  'car' : lambda x: x[0],
-  'cdr' : lambda x: x[1:],
-  'eq'  : lambda x: lambda y: x == y,
-  'atom': lambda x: atom(x),
-  'idx' : lambda x: lambda y: idx(x, y, 0),
-  'read': lambda x: seread()
+  'C': lambda x: lambda y: [x] + y,
+  'H': lambda x: x[0],
+  'T': lambda x: x[1:],
+  'E': lambda x: lambda y: x == y,
+  'A': lambda x: atom(x),
+  'I': lambda x: lambda y: idx(x, y, 0),
+  'R': lambda x: seread()
 }
 

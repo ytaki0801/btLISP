@@ -13,30 +13,30 @@
    ;;;; not pair
    (if (atom s)
        ;;;; int value to set S
-       (if (intp s) (list (quote LV) s (cdr c))
+       (if (intp s) (list (quote V) s (cdr c))
        ;;;; nil value to set S
-       (if (eq s (quote nil)) (cons (quote LV) (cons (quote ()) c))
+       (if (eq s (quote nil)) (cons (quote V) (cons (quote ()) c))
        ;;;; a constant value or a pos of a closure val from E to set S
-       ((lambda (p) (if (eq p nil) (cons (quote LV) (cons s c))
-                                   (cons (quote LD) (cons p c))))
+       ((lambda (p) (if (eq p nil) (cons (quote V) (cons s c))
+                                   (cons (quote P) (cons p c))))
         (idx s e))))
 
    ;;;; quote
-   (if (eq (car s) (quote quote)) (cons (quote LV) (cons (car (cdr s)) c))
+   (if (eq (car s) (quote quote)) (cons (quote V) (cons (car (cdr s)) c))
 
    ;;;; if
    (if (eq (car s) (quote if))
        ((lambda (t f)
-          ((u u) (car (cdr s)) e (cons (quote SL) (cons t (cons f c)))))
-        ((u u) (car (cdr (cdr s)))       e (quote (JI)))
-        ((u u) (car (cdr (cdr (cdr s)))) e (quote (JI))))
+          ((u u) (car (cdr s)) e (cons (quote Y) (cons t (cons f c)))))
+        ((u u) (car (cdr (cdr s)))       e (quote (J)))
+        ((u u) (car (cdr (cdr (cdr s)))) e (quote (J))))
 
    ;;;; lambda
    (if (eq (car s) (quote lambda))
        ((lambda (v b)
           ((lambda (br)
-             (cons (quote LF)
-                (cons ((u u) br ((cons (car v)) e) (quote (RT))) c)))
+             (cons (quote F)
+                (cons ((u u) br ((cons (car v)) e) (quote (R))) c)))
            (if (eq (cdr v) nil) b
                 ;;;; recursive expansion for multi argumens of lambda
                (cons (quote lambda) (cons (cdr v) (list b))))))
@@ -45,12 +45,12 @@
    ;;;; list
    (if (eq (car s) (quote list))
        (if (eq (cdr s) nil)
-           (cons (quote LV) (cons (quote ()) c))
+           (cons (quote V) (cons (quote ()) c))
            ;;;; recursive expansion for multi vals
            (add (add
              ((u u) (cons (quote list) (cdr (cdr s))) e nil)
              ((u u) (cons (quote (quote cons)) (list (car (cdr s))))
-                    e (quote (AP)))) c))
+                    e (quote (A)))) c))
 
    ;;;; urec: recursion syntax by U-combinator
    (if (eq (car s) (quote urec))
@@ -67,10 +67,10 @@
       ((urec w (lambda (t r)
          (if (eq r nil) (add t c)
              ;;;; recursive apply for multi argumens of lambda
-             ((w w) ((u u) (car r) e (add t (quote (AP)))) (cdr r)))))
-       ((u u) a e ((u u) f e (quote (AP)))) r))
+             ((w w) ((u u) (car r) e (add t (quote (A)))) (cdr r)))))
+       ((u u) a e ((u u) f e (quote (A)))) r))
     (car s) (car (cdr s)) (cdr (cdr s)))))))))))
 
- ;;;; read S-expression, initialize env as nil and (ST) as next codes
- (read nil) nil (quote (ST)))
+ ;;;; read S-expression, initialize env as nil and (B) as next codes
+ (read nil) nil (quote (B)))
 

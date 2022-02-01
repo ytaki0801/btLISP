@@ -1,8 +1,8 @@
-(((lambda (reverse) (lambda (a)
-    ((reverse a) (quote ()))))
-  ((lambda (u) (u u)) (lambda (u)
-     (lambda (x) (lambda (y)
-       (if ((eq x) (quote ())) y
-           (((u u) (cdr x)) ((cons (car x)) y))))))))
- (quote (a b c d e)))
+(((L (R) (L (A)
+    ((R A) (Q ()))))
+  ((L (U) (U U)) (L (U)
+     (L (X) (L (Y)
+       (Y ((E X) (Q ())) Y
+           (((U U) (T X)) ((C (H X)) Y))))))))
+ (Q (A B C D E)))
 
