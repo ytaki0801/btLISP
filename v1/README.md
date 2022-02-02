@@ -6,7 +6,7 @@
 
 * Changed syntax and built-in words to general naming
 	* `quote`, `if`, `lambda`
-	* `cons`, `car`, `cdr`, `eq`, `atom`, `idx`, read
+	* `cons`, `car`, `cdr`, `eq`, `atom`, `idx`, `read`
 
 * Additional syntax
 	* `nil` as empty set, integers, `lamda` with multi arguments, `list`
