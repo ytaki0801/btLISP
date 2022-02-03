@@ -1,8 +1,6 @@
-(((L (R) (L (A)
-    ((R A) (Q ()))))
-  ((L (U) (U U)) (L (U)
+((((L (U) (U U)) (L (U)
      (L (X) (L (Y)
        (Y ((E X) (Q ())) Y
-           (((U U) (T X)) ((C (H X)) Y))))))))
- (Q (A B C D E)))
+           (((U U) (T X)) ((C (H X)) Y)))))))
+ (Q (A B C D E))) (Q ()))
 
