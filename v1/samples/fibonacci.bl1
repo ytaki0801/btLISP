@@ -1,6 +1,0 @@
-;;;; fibonacci sequence from until 21th
-((urec f (lambda (n a b)
-   (if (lt n 0) nil
-       (cons a ((f f) (sub n 1) b (add a b))))))
- 21 0 1)
-

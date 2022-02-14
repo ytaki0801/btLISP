@@ -1,2 +1,0 @@
-(add (quote (x y z)) (quote (a b c)))
-

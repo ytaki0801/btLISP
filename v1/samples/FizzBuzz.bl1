@@ -1,9 +1,0 @@
-;;;; FizzBuzz example
-((urec fb (lambda (x r)
-   (if (eq x 0) r
-       (if (eq (rem x 15) 0) ((fb fb) (sub x 1) (cons (quote FizzBuzz) r))
-       (if (eq (rem x  3) 0) ((fb fb) (sub x 1) (cons (quote Fizz)     r))
-       (if (eq (rem x  5) 0) ((fb fb) (sub x 1) (cons (quote Buzz)     r))
-                             ((fb fb) (sub x 1) (cons x r))))))))
- 30 nil)
-

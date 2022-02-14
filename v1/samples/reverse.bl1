@@ -1,6 +1,0 @@
-;;;; reverse example
-((urec r (lambda (x y)
-   (if (eq x nil) y
-       ((r r) (cdr x) (cons (car x) y)))))
- (quote (a b c d e)) nil)
-
