@@ -35,11 +35,11 @@ $ ./blSECD out2.blSECD | python3 blSECD.py
 (a y z)
 ```
 
-I do not put VM codes derived from `bt-comp.scm` on purpose. Enjoy to bootstrap!
+I do not put VM codes derived from `bt-comp.scm` on purpose. Enjoy bootstrapping!
 
 ## `blSECD.py`,`blSECD.c`: A SECD-style Virtual Machine implementation
 
-The specification of the VM is a SECD-style but customized to btLISP minimum Scheme-subset as possible.
+The specification of the VM is a [SECD-style](https://en.wikipedia.org/wiki/SECD_machine) but customized to be minimum as possible to enjoy bootstrapping.
 
 ### Sample Codes
 
@@ -58,7 +58,7 @@ The specification of the VM is a SECD-style but customized to btLISP minimum Sch
 ### Instructions
 
 |Stacks|Description|
-|:---:|:---:|:---:|
+|:---:|:---:|
 |`S`|stack to work|
 |`E`|env to keep closure values|
 |`C`|VM codes|
@@ -91,13 +91,13 @@ Note that closures in the VM are supposed to have just one argument only so you 
 * `read` with `current-input-port` as standard input port
 * `write`, `+` needed to self-compile
 
-Note that the above functions are curried, same as closures in VM, so you must call twice if the function needs two values.
+Note that the above functions are curried, same as closures in VM, so you must `app` twice if the function needs two arguments.
 
 ### Other features in VM
 
 * comments between ";" and end of the line
 * NO `#t` NOR `#f` as boolean values
-* NO dot notation NOR single quotation as quote
+* NO dot notation NOR single quotation as `quote`
 * NO global environment
 
 ## License
