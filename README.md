@@ -95,7 +95,7 @@ Note that the above functions are curried, same as closures in VM, so you must `
 
 ### Other features in VM
 
-* comments between ";" and end of the line
+* comments between `;` and end of the line
 * NO `#t` NOR `#f` as boolean values
 * NO dot notation NOR single quotation as `quote`
 * NO global environment
