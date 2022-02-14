@@ -35,7 +35,7 @@ $ ./blSECD out2.blSECD | python3 blSECD.py
 (a y z)
 ```
 
-I do not put VM codes derived from `bt-comp.scm` on purpose. Enjoy bootstrapping!
+I do not put VM codes derived from `bt-comp.scm` in this repository on purpose. Enjoy bootstrapping!
 
 ## `blSECD.py`,`blSECD.c`: A SECD-style Virtual Machine implementation
 
