@@ -2,9 +2,9 @@
 
 This project is aimed to define a minimum specification of a LISP self-compiler implementation and a SECD-style virtual machine for fun, education or research of [bootstrapping](https://en.wikipedia.org/wiki/Bootstrapping_(compilers)).
 
-See the shell scripts for details to bootstrap. Currently Scheme implementation is just supposed to bootstrap because the compiler is written in btLISP itself as a Scheme-subset, but other languages may be supposed in future. And VM implementation languages are now C and Python only but Scheme may be supposed.
+See the shell scripts for details to bootstrap. Currently Scheme implementation is just supposed to bootstrap because the compiler is written in btLISP itself as a Scheme-subset, but other languages may be supposed to bootstrap btLISP in future. And VM implementation languages are now C and Python only but Scheme may be supposed.
 
-## `bt-comp.scm`: btLISP Scheme-subset compiler in Scheme-subset for `blSECD`
+## `bt-comp.scm`: btLISP compiler in btLISP for `blSECD`
 
 The compiler is written in the following syntax in Scheme subset except built-in functions in the VM, called `blSECD`.
 
