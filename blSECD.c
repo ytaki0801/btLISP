@@ -145,13 +145,6 @@ node_t add(node_t a, node_t b) {
 #define POP(VAR, s)  VAR = car(s); s = cdr(s)
 
 int main(int argc, char* argv[]) {
-#ifdef MEMCHECK
-  printf("allocated memory = %ld\n",
-          sizeof(node) + sizeof(cell) + sizeof(symb));
-  printf("node = %ld, cell = %ld, symb = %ld\n",
-          sizeof(node), sizeof(cell), sizeof(symb));
-#endif
-
   node[NIL] = NIL;
   node_t S = NIL, E = NIL, C = NIL, D = NIL;
 
@@ -164,17 +157,6 @@ int main(int argc, char* argv[]) {
     }
     C = sread(fp); fclose(fp);
   }
-#ifdef CODECHECK
-swrite(C); printf("\n");
-#endif
-#ifdef MEMCHECK
-  printf("used memory = %d\n",
-         (nnum - 1) * 4 + (cnum - 1) * 4 * 2 + (snum - 1) * SLEN);
-  printf("node = %d, cell = %d, symb = %d\n",
-         (nnum - 1) * 4, (cnum - 1) * 4 * 2, (snum - 1) * SLEN);
-  printf("nnum = %d, cnum = %d, snum = %d\n",
-         (nnum - 1), (cnum - 1), (snum - 1));
-#endif
 
   // symbols of instructions
   node_t LDV = ssym("ldv"), LDF = ssym("ldf"), LDC = ssym("ldc");
@@ -218,15 +200,6 @@ swrite(C); printf("\n");
     }
     POP(r, C);
   }
-
-#ifdef MEMCHECK
-  printf("used memory = %d\n",
-         (nnum - 1) * 4 + (cnum - 1) * 4 * 2 + (snum - 1) * SLEN);
-  printf("node = %d, cell = %d, symb = %d\n",
-         (nnum - 1) * 4, (cnum - 1) * 4 * 2, (snum - 1) * SLEN);
-  printf("nnum = %d, cnum = %d, snum = %d\n",
-         (nnum - 1), (cnum - 1), (snum - 1));
-#endif
 
   return 0;
 }

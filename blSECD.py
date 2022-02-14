@@ -1,3 +1,12 @@
+####
+#### blSECD.py:
+#### A SECD-style Virtual Machine with Scheme-subset Built-ins
+####
+#### (C) 2022 TAKIZAWA Yozo
+#### This code is licensed under CC0.
+#### https://creativecommons.org/publicdomain/zero/1.0/
+####
+
 from sys import argv
 from re import sub
 
