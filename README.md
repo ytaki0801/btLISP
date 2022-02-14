@@ -1,6 +1,6 @@
-# btLISP: a Pure LISP Self-Compiler with a SECD-style Virtual Machine
+# btLISP: a Pure LISP Self-Compiling Compiler with a SECD-style Virtual Machine
 
-This project is aimed to define a minimum specification of a LISP self-compiler implementation and a SECD-style virtual machine for fun, education or research of [bootstrapping](https://en.wikipedia.org/wiki/Bootstrapping_(compilers)).
+This project is aimed to define a minimum specification of a LISP self-compiling compiler implementation and a SECD-style virtual machine for fun, education or research of [bootstrapping](https://en.wikipedia.org/wiki/Bootstrapping_(compilers)).
 
 See the shell scripts for details to bootstrap. Currently Scheme implementation is just supposed to bootstrap because the compiler is written in btLISP itself as a Scheme-subset, but other languages may be supposed to bootstrap btLISP in future. And VM implementation languages are now C and Python only but Scheme may be supposed.
 
