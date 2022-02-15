@@ -26,13 +26,12 @@ def sread(file=None):
 
 def swrite(s):
     def ls(x):
-        r = list(x); d = r[1:]; swrite(r[0])
-        if isinstance(d, list) and d: print(' ', end=''); ls(list(d))
+        swrite(x[0]); d = x[1:]
+        if isinstance(d, list) and d: print(' ', end=''); ls(d)
     if isinstance(s, str): print(s, end='')
     else:
-        r = list(s)
-        if not r: print('()', end='')
-        else: print('(', end=''); ls(r); print(')', end='')
+        if not s: print('()', end='')
+        else: print('(', end=''); ls(s); print(')', end='')
 
 G = {
   'cons'  : lambda x: lambda y: [x] + y,
